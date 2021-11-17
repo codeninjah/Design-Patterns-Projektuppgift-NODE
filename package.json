@@ -1,0 +1,28 @@
+{
+  "name": "design-patterns-projektuppgift-node",
+  "version": "1.0.0",
+  "description": "Er uppgift är att skriva ett REST API för en webbshop, med hjälp av TDD. Det betyder att ni så att säga ska koda baklänges:",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeninjah/Design-Patterns-Projektuppgift-NODE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeninjah/Design-Patterns-Projektuppgift-NODE/issues"
+  },
+  "homepage": "https://github.com/codeninjah/Design-Patterns-Projektuppgift-NODE#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6"
+  }
+}
