@@ -21,16 +21,16 @@ Ni ska inte ha någon riktig databas. Använd en "in memory" array och lägg all
 
 API:et ska vara RESTful och ha följande endpoints. ":id" betyder att det ska finnas en URL-parameter, som används för att identifiera en produkt unikt. Interface är ett sätt att beskriva vilka egenskaper ett objekt ska ha, och vilken datatyp de ska vara. Interface används i TypeScript.
 
-GET
-/api/products/
-GET
-/api/products/:id
-POST
-/api/products/
-PUT
-/api/products/:id
-DELETE
-/api/products/:id
+|GET|
+|/api/products/|
+|GET|
+|/api/products/:id|
+|POST|
+|/api/products/|
+|PUT|
+|/api/products/:id|
+|DELETE|
+|/api/products/:id|
 
 
 Ett produkt-objekt ska se ut så här:
@@ -41,14 +41,14 @@ interface Product {
 }
 
 
+|GET|
+|/api/users/|
 GET
-/api/users/
-GET
-/api/users/:id
+|/api/users/:id|
 POST
-/api/users/
+|/api/users/|
 DELETE
-/api/users/:id
+|/api/users/:id|
 
 
 Ett user-objekt ska se ut så här:
