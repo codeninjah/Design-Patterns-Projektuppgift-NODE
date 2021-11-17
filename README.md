@@ -34,11 +34,13 @@ API:et ska vara RESTful och ha följande endpoints. ":id" betyder att det ska fi
 
 
 Ett produkt-objekt ska se ut så här:
+```javascript
 interface Product {
     id: string; 	// unikt värde för varje produkt
     name: string;   // produktens namn
     price: number;  // produktens pris i SEK
 }
+```
 
 
 |GET|
@@ -52,11 +54,12 @@ DELETE
 
 
 Ett user-objekt ska se ut så här:
+```javascript
 interface User {
     name: string;   // användarens namn
     login: string;  // unikt värde, används vid inloggning
 }
-
+```
 
 GET
 
@@ -71,11 +74,12 @@ DELETE
 
 
 En cart (kundvagn) ska vara en array med produkter:
+```javascript
 interface CartItem {
     productId: string;  // id för den produkt som refereras till
     amount: number; 	// antal produkter av den sorten
 }
-
+```
 Varje endpoint ska testas med minst ett testfall!
 
 
