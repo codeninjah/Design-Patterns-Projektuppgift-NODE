@@ -83,7 +83,4 @@ Varje endpoint ska testas med minst ett testfall!
 # Sätt igång:
 
 1. Clona denna repo
-2. Install packages
-    npm npm i express
-    npm i -D jest supertest
-    npm install nodemon
+2. `npm install`
