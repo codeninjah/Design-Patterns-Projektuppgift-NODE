@@ -3,11 +3,11 @@
 ## Projektuppgift: Node
 Er uppgift är att skriva ett REST API för en webbshop, med hjälp av TDD. **Det betyder att ni så att säga ska koda baklänges:**
 
-* Utgå från kravspecifikationen (denna instruktion)\
-* Diskutera kraven tills alla i gruppen förstår dem\
-* Hoppa över user stories\
-* Formulera acceptanskriterier för kraven, om det behövs\
-* Hitta på lämpliga testfall\
+* Utgå från kravspecifikationen (denna instruktion)
+* Diskutera kraven tills alla i gruppen förstår dem
+* Hoppa över user stories
+* Formulera acceptanskriterier för kraven, om det behövs
+* Hitta på lämpliga testfall
 * Skriv ett testfall i taget → skriv sedan kod som gör testfallet grönt → refaktorera sedan tills koden är clean
 
 *Obs! I ett riktigt projekt hade vi börjat från andra hållet:\
@@ -16,7 +16,7 @@ Ta fram de endpoints som behövs för att lösa våra user stories*
 
 
 Bestäm vilken sorts produkter webbshopen ska sälja.\
-Backend-koden ska använda Express, Jest och SuperTest. Lästips \
+Backend-koden ska använda Express, Jest och SuperTest. [Lästips](https://dev.to/franciscomendes10866/testing-express-api-with-jest-and-supertest-3gf) \
 Ni ska inte ha någon riktig databas. Använd en "in memory" array och lägg alla databas-funktioner i en separat fil. Vi använder ***separation of concerns*** och ***decoupling*** för att möjliggöra lätt byte till annan databas.
 
 API:et ska vara **RESTful** och ha följande endpoints. ":id" betyder att det ska finnas en URL-parameter, som används för att identifiera en produkt unikt. Interface är ett sätt att beskriva vilka egenskaper ett objekt ska ha, och vilken datatyp de ska vara. Interface används i TypeScript.
