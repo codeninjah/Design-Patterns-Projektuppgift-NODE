@@ -25,23 +25,34 @@ let Products = [
     "Oliver"
 ] 
 
-let data = fs.readFileSync("./model/products.json")
+
+let data = fs.readFileSync("./database.json")
 let row = JSON.parse(data)
 console.log(row)
 
-row.Products = []
-for(let product of Products) {
+function seed(key, object){
+row[key] = []
+for(let product of row[key]) {
     const rndPrice = Math.floor(Math.random() * 100)
-    row.Products.push(
-        {
-            "id": uuidv4(),
-           "name": product,
-           "price": rndPrice
-        }
+    row[key].push(
+        object
     )
+    row[key].name = product
 }
+
+}
+seed("Products", {
+    "id": uuidv4(),
+   "name": "",
+   "price": rndPrice
+})
+
+seed("Users", {
+    "name": "",
+    "login": ""
+})
 
 console.log(row)
 
 let newRow = JSON.stringify(row)
-fs.writeFileSync('./model/products.json', newRow)
+fs.writeFileSync('./database.json', newRow)
