@@ -6,7 +6,11 @@ const { Router } = require("express")
 
 const router = Router()
 
-router.get("/product", (req, res) => { res.send("skurt was here")} )
+router.get("/products", (req, res) => {} )
+router.get("/products/:id", (req, res) => {} )
+router.get("/products", (req, res) => {} )
+router.get("/products/:id", (req, res) => {} )
+router.get("/products/:id", (req, res) => {} )
 
 
 module.exports = router

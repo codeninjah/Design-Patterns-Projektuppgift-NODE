@@ -6,7 +6,10 @@ const { Router } = require("express")
 
 const router = Router()
 
-router.get("/user", (req, res) => { res.send("skurt was here")} )
+router.get("/users", (req, res) => {})
+router.get("/users/:id", (req, res) => {})
+router.get("/users", (req, res) => {})
+router.get("/users/:id", (req, res) => {})
 
 
 module.exports = router
