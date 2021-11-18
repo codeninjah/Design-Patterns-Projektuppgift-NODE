@@ -1,13 +1,14 @@
 const request = require("supertest");
 
-const app = require("./app");
+
+const app = require("./app.js");
 
 
 describe("Test example", () => {
     test("GET api/users", (done) => {
       // Logic goes here
       request(app)
-      .get("/api/users")
+      .get("api/users")
       .expect("Content-Type", /json/)
       .send({
         email: "francisco@example.com",
