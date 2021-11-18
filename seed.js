@@ -24,35 +24,57 @@ let Products = [
     "Gurka",
     "Oliver"
 ] 
+let Users = [
+    "Kalle",
+    "Sven",
+    "Anders", 
+    "Romina",
+    "Nillufar",
+    "Alex",
+    "Simon",
+    "David",
+    "Viktor",
+    "Lotta",
+    "Pelle",
+    "André",
+    "Lotta",
+    "Olof",
+    "Sven-Åke",
+    "Carl",
+    "Jörgen",
+    "Sofia",
+    "Eva",
+    "Sofia",
+    "Henry"    
+]
 
 
 let data = fs.readFileSync("./database.json")
 let row = JSON.parse(data)
-console.log(row)
-
-function seed(key, object){
-row[key] = []
-for(let product of row[key]) {
-    const rndPrice = Math.floor(Math.random() * 100)
-    row[key].push(
-        object
-    )
-    row[key].name = product
-}
-
-}
-seed("Products", {
-    "id": uuidv4(),
-   "name": "",
-   "price": rndPrice
-})
-
-seed("Users", {
-    "name": "",
-    "login": ""
-})
-
-console.log(row)
+function seed(key, array){
+    row[key] = []
+    for(let name of array) {
+        if (key == "Products") {
+            const rndPrice = Math.floor(Math.random() * 100)
+            row[key].push(
+                {
+                    "id": uuidv4(),
+                "name": name,
+                "price": rndPrice
+                }
+            )
+        } else {
+            row[key].push(
+                {
+                    "name": name,
+                    "login": uuidv4()
+                }
+            )
+        }
+    }}
+    
+seed("Products", Products)
+seed("Users", Users)
 
 let newRow = JSON.stringify(row)
 fs.writeFileSync('./database.json', newRow)
