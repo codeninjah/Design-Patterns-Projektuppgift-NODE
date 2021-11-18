@@ -6,11 +6,11 @@ const { Router } = require("express")
 
 const router = Router()
 
-router.get("/products", (req, res) => {} )
-router.get("/products/:id", (req, res) => {} )
-router.post("/products", (req, res) => {} )
-router.patch("/products/:id", (req, res) => {} )
-router.delete("/products/:id", (req, res) => {} )
+router.get("/products", (req, res) => {res.send("skurt was here")} )
+router.get("/products/:id", (req, res) => {res.send("skurt was here")} )
+router.post("/products", (req, res) => {res.send("skurt was here")} )
+router.patch("/products/:id", (req, res) => {res.send("skurt was here")} )
+router.delete("/products/:id", (req, res) => {res.send("skurt was here")} )
 
 
 module.exports = router
