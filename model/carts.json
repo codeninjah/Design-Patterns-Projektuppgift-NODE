@@ -1,5 +1,45 @@
 {
     "CartItem": [
-        
+        {
+            "productId":"apple123",
+            "amount":1
+        },
+
+        {
+            "productId":"kivi123",
+            "amount":2
+        },
+        {
+            "productId":"banana123",
+            "amount":3
+        },
+        {
+            "productId":"bluebarry123",
+            "amount":2
+        },
+        {
+            "productId":"Potato123",
+            "amount":1
+        },
+        {
+            "productId":"Grape123",
+            "amount":6
+        },
+        {
+            "productId":"Potato123",
+            "amount":1
+        },
+        {
+            "productId":"Tomato123",
+            "amount":4
+        },
+        {
+            "productId":"Paprika123",
+            "amount":3
+        },
+        {
+            "productId":"Onion123",
+            "amount":1
+        }
     ]
 }
