@@ -1,100 +1,104 @@
 {
     "Products": [
         {
-            "id":"apple123",
-            "name":"Apple",
-            "price":0.2
+            "id": "3361a798-9aa0-477f-b3f2-54c34af6526f",
+            "name": "Apple",
+            "price": 33
         },
         {
-            "id":"kivi123",
-            "name":"Kivi",
-            "price":0.2
+            "id": "1f867636-41b7-4908-8816-0a859edb3df2",
+            "name": "Banan",
+            "price": 37
         },
         {
-            "id":"banana123",
-            "name":"Banana",
-            "price":0.2
+            "id": "2f576883-fcea-4878-b5d1-df571524010e",
+            "name": "Kiwi",
+            "price": 76
         },
         {
-            "id":"bluebarry123",
-            "name":"Bluebarry",
-            "price":0.2
+            "id": "090cb4ab-8b2f-4192-a49f-35f6228f3621",
+            "name": "Ananas",
+            "price": 1
         },
         {
-            "id":"Strawbarry123",
-            "name":"Strawbarry",
-            "price":0.2
+            "id": "a89053be-3cd1-46a6-bac6-e1ef3d4e9625",
+            "name": "Majs",
+            "price": 21
         },
         {
-            "id":"Peach123",
-            "name":"Peach",
-            "price":0.2
+            "id": "0b55e5df-9157-4fb1-868f-061c12699fc6",
+            "name": "Lök",
+            "price": 36
         },
         {
-            "id":"Orange123",
-            "name":"Orange",
-            "price":0.2
+            "id": "f49211d4-9556-4f1f-99d0-41d692105c44",
+            "name": "Vitlök",
+            "price": 36
         },
         {
-            "id":"mellon123",
-            "name":"Mellon",
-            "price":0.2
+            "id": "0c9bd113-a5cb-4fb2-886c-fd0c2328bef2",
+            "name": "Ginger",
+            "price": 18
         },
         {
-            "id":"Grape123",
-            "name":"Grape",
-            "price":0.2
+            "id": "aa808c12-5d54-43d5-a440-7ad19d46ab13",
+            "name": "Tomat",
+            "price": 30
         },
         {
-            "id":"Lemon123",
-            "name":"Lemon",
-            "price":0.2
+            "id": "87f458b0-f1e2-40ff-8a87-434a945648ec",
+            "name": "Jordgubbar",
+            "price": 58
         },
         {
-            "id":"Brocooli123",
-            "name":"Brocooli",
-            "price":0.2
+            "id": "7ef16e99-b9b2-40b5-b386-722eb2a0db8d",
+            "name": "Blåbär",
+            "price": 17
         },
         {
-            "id":"Potato123",
-            "name":"Potato",
-            "price":0.2
+            "id": "82b21f2d-0a86-4624-8471-35e3b3c45a39",
+            "name": "Hallon",
+            "price": 55
         },
         {
-            "id":"Onion123",
-            "name":"Onion",
-            "price":0.2
+            "id": "a5c10dc7-7b5d-4306-bf88-e8c7d5298dd1",
+            "name": "Päron",
+            "price": 31
         },
         {
-            "id":"Tomato123",
-            "name":"Tomato",
-            "price":0.2
+            "id": "eb002f3c-a28d-47d7-9f64-0a7f4dff2e24",
+            "name": "Sallad",
+            "price": 79
         },
         {
-            "id":"Carrot123",
-            "name":"Carrot",
-            "price":0.2
+            "id": "f81cb93a-f701-47c4-a64b-0c67bf4f91fc",
+            "name": "Plummon",
+            "price": 91
         },
         {
-            "id":"Mushroom123",
-            "name":"Mushroom",
-            "price":0.2
+            "id": "43eb369b-545c-497d-8185-9d1daef8bfdc",
+            "name": "Lime",
+            "price": 68
         },
         {
-            "id":"Avocato123",
-            "name":"Avocato",
-            "price":0.2
+            "id": "9372257a-e280-42bc-a5be-ac5c8983ae98",
+            "name": "Mandarin",
+            "price": 99
         },
         {
-            "id":"Paprika123",
-            "name":"Paprika",
-            "price":0.2
+            "id": "9f16a251-2253-4e33-aac6-eb202107ffa0",
+            "name": "Mellon",
+            "price": 21
         },
         {
-            "id":"Ginger123",
-            "name":"Ginger",
-            "price":0.2
+            "id": "8b4af6e3-4152-453a-9975-36b4f12dbc2d",
+            "name": "Gurka",
+            "price": 19
+        },
+        {
+            "id": "8dbf1787-c839-4438-85fe-1495e39e1984",
+            "name": "Oliver",
+            "price": 75
         }
-
-    ] 
+    ]
 }
