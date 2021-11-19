@@ -1,6 +1,5 @@
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
-uuidv4();
 
 let Products = [
     "Apple", 
@@ -24,6 +23,7 @@ let Products = [
     "Gurka",
     "Oliver"
 ] 
+
 let Users = [
     "Kalle",
     "Sven",
@@ -49,22 +49,22 @@ let Users = [
 ]
 
 
-let data = fs.readFileSync("./database.json")
-let row = JSON.parse(data)
+let readData = fs.readFileSync("./database.json")
+let parsedData = JSON.parse(readData)
 function seed(key, array){
-    row[key] = []
+    parsedData[key] = []
     for(let name of array) {
         if (key == "Products") {
-            const rndPrice = Math.floor(Math.random() * 100)
-            row[key].push(
+            const randomPrice = Math.floor(Math.random() * 100)
+            parsedData[key].push(
                 {
                     "id": uuidv4(),
                 "name": name,
-                "price": rndPrice
+                "price": `${randomPrice} SEK`
                 }
             )
         } else {
-            row[key].push(
+            parsedData[key].push(
                 {
                     "name": name,
                     "login": uuidv4()
@@ -76,5 +76,5 @@ function seed(key, array){
 seed("Products", Products)
 seed("Users", Users)
 
-let newRow = JSON.stringify(row)
-fs.writeFileSync('./database.json', newRow)
+let stringData = JSON.stringify(parsedData)
+fs.writeFileSync('./database.json', stringData)
