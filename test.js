@@ -5,38 +5,34 @@ const app = require("./app");
 
 const requestWithSupertest = request(app);
 
-
+expect.extend({
+	toBeType(received, argument) {
+		const initialType = typeof received;
+		const type = initialType === "object" ? Array.isArray(received) ? "array" : initialType : initialType;
+		return type === argument ? {
+			message: () => `expected ${received} to be type ${argument}`,
+			pass: true
+		} : {
+			message: () => `expected ${received} to be type ${argument}`,
+			pass: false
+		};
+	}
+});
 
 describe("Test Endpoints", () => {
-    test("GET /api/users", async () => {
-      const res = await requestWithSupertest.get("/api/users")  
-      expect(res.status).toEqual(200);
-      expect(res.type).toEqual(expect.stringContaining('json'));
-      expect(Array.isArray(res.body.data))
-      // expect((res)=>{
-        // res.body.data.length = 5
-        // typeof(res.body.data) == "string"
-        // Array.isArray(res.body.data)
-      // })
-      // expect(firstLine).toEqual(20);
+  /*
+    test("GET /api/users request", async () => {
+      const res = await requestWithSupertest.get("/api/users?name=22")  
+      expect(res._query.name).toEqual("22")
     })
-
-    // test("GET /api/users", (done) => {
-      
-    //   request(app)
-
-    //   .get("/api/users")
-    //   .expect("Content-Type", /json/)
-    //   .expect(200)
-    //   .then(response => {
-    //     assert(response.body[0].name, 'Kalle')
-    //     done();
-    // })
-    // .catch(err => done(err))
-
-    // })
-
-
-    
+    */
+    test("GET /api/users response", async () => {
+      const res = await requestWithSupertest.get("/api/users")  
+      expect(res.status).toEqual(200)
+      expect(res.type).toEqual(expect.stringContaining('json'))
+      expect(res.body.data).toBeType("array")
+      expect(res.body.data[0].name).toBeType("string")
+      expect(res.body.data[0].login).toBeType("string")
+    })
 });
   
