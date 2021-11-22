@@ -1,12 +1,17 @@
 
 const { Router } = require("express")
+const { Products } = require("../database.json");
 
 // req controller
 
 
 const router = Router()
 
-router.get("/products", (req, res) => {res.send("skurt was here")} )
+router.get("/products", (req, res) => {
+    //   console.log(Users);
+    //   res.setHeader('content-type', 'application/json');
+    res.status(200).json({data : Products});    
+} )
 router.get("/products/:id", (req, res) => {res.send("skurt was here")} )
 router.post("/products", (req, res) => {res.send("skurt was here")} )
 router.patch("/products/:id", (req, res) => {res.send("skurt was here")} )
