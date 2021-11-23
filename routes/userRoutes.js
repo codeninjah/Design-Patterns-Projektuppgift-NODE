@@ -11,7 +11,9 @@ router.get("/users", (req, res) => {
   res.status(200).json({data : Users});
 });
 router.get("/users/:id", (req, res) => {
-  res.send("skurt was here");
+  const id = req.params.id
+  const user = Users.find(element => element.login == id)
+  res.status(200).json({data : user});
 });
 router.post("/users", (req, res) => {
   res.send("skurt was here");
