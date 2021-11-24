@@ -105,6 +105,13 @@ describe("Test Endpoints", () => {
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is registered")
     })
+    test("PATCH api/products", async () => {
+      const id = "5427d4d6-42a6-4d68-be44-a4d78e15cfbe"
+      const name = "Kebabistan"
+      const res = await requestWithSupertest.patch("api/products/" + id)
+
+
+    })
   })
 })
   
