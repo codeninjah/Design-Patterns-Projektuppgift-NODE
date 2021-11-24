@@ -64,6 +64,18 @@ describe("Test Endpoints", () => {
       const product = products.find(element => element.id == "b57dcdac-b3dc-4fdc-ab77-092d2f7370f9")
       expect(product).not.toBeUndefined()
     })
+    test("GET api/products response", async () => {
+      const res = await requestWithSupertest.get("/api/products/55f0c839-c9f5-4a77-bd1f-1d12667bf412")
+      expect(res.status).toEqual(200)
+      const product = res.body.data
+      //const product = products.find(element => element.id == "55f0c839-c9f5-4a77-bd1f-1d12667bf412")
+      //console.log(product)
+      //console.log(product.name)
+      console.log(res.text)
+      expect(product.id).toBeType("string")
+      expect(product.name).toBe("Ginger")
+    })
+    
   })
 })
   
