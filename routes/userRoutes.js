@@ -1,6 +1,7 @@
 const { Users } = require("../database.json");
 const { Router } = require("express");
 const { InvalidParam, NoUser } = require("../errors")
+const { writeToDb } = require("./writeToDb")
 
 // req controller
 
@@ -41,6 +42,12 @@ router.delete("/users/:id", (req, res) => {
   // testa om arrayn blir mindre?
   // testa om det blir fel
   const user = Users.find(element => element.login == id)
+  const index = Users.indexOf(user)
+  const newUsers = Users.filter(element => {
+    return element.login != id
+  })
+  // not now
+  // writeToDb(newUsers, "Users")
   res.send(user.name + " is deleted");
 });
 

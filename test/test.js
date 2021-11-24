@@ -52,7 +52,7 @@ describe("Test Endpoints", () => {
       console.log(res.status)
       expect(res.status).toEqual(404)
     })
-    test("Post /api/users", async () => {
+    test("Post /api/users/:id", async () => {
       const name = "Skurt"
       const res = await requestWithSupertest.post("/api/users").send({
         name
@@ -60,7 +60,7 @@ describe("Test Endpoints", () => {
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is registered")
     })
-    test("Delete /api/users", async () => {
+    test("Delete /api/users/:id", async () => {
       const login = "380e0ff1-3ab8-4a45-85f3-63148ae5560e"
       const name = "Pelle"
       const res = await requestWithSupertest.delete("/api/users/" + login)
