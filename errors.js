@@ -6,7 +6,7 @@ class InvalidParam extends DesignPatternError {
         super()
         this.fields = fields
         this.message = "Invalid Param"
-        this.errorCode = 404
+        this.statusCode = 404
     }
 }
 
@@ -15,7 +15,7 @@ class NoUser extends DesignPatternError {
         super()
         this.fields = fields
         this.message = "There is no user with that id"
-        this.errorCode = 404
+        this.statusCode = 404
     }
 }
 
