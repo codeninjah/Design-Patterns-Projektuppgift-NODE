@@ -48,6 +48,7 @@ describe("Test Endpoints", () => {
     })
     test("GET /api/users/:id response error", async () => {
       const res = await requestWithSupertest.get("/api/users/undefined") 
+      console.log(res.status)
       expect(res.status).toEqual(404)
     })
   })

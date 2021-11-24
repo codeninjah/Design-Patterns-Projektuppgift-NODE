@@ -1,5 +1,6 @@
 const { Users } = require("../database.json");
 const { Router } = require("express");
+const { InvalidParam, NoUser } = require("../errors")
 
 // req controller
 
@@ -13,10 +14,13 @@ router.get("/users", (req, res) => {
 router.get("/users/:id", (req, res) => {
   const id = req.params.id
   if (!id) {
-    throw new Error("wrong param")
+    throw new InvalidParam(["id"])
     // fel statuskod
   }
   const user = Users.find(element => element.login == id)
+  if (!user) {
+    throw new NoUser(["id"])
+  }
   res.status(200).json({data : user});
 });
 router.post("/users", (req, res) => {
