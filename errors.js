@@ -19,7 +19,17 @@ class NoUser extends DesignPatternError {
     }
 }
 
+class NoProduct extends DesignPatternError {
+    constructor(fields) {
+        super()
+        this.fields = fields
+        this.message = "There is no product with that id"
+        this.statusCode = 404
+    }
+}
+
 module.exports = {
     InvalidParam,
-    NoUser
+    NoUser,
+    NoProduct
 }
