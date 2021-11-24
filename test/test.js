@@ -2,6 +2,7 @@ const request = require("supertest");
 let assert = require('assert') 
 
 const app = require("../app");
+const { response } = require("../app");
 
 const requestWithSupertest = request(app);
 
@@ -80,7 +81,7 @@ describe("Test Endpoints", () => {
       const product = products.find(element => element.id == "b57dcdac-b3dc-4fdc-ab77-092d2f7370f9")
       expect(product).not.toBeUndefined()
     })
-    test("GET api/products response", async () => {
+    test("GET api/products/:id response", async () => {
       const res = await requestWithSupertest.get("/api/products/55f0c839-c9f5-4a77-bd1f-1d12667bf412")
       expect(res.status).toEqual(200)
       const product = res.body.data
@@ -91,7 +92,19 @@ describe("Test Endpoints", () => {
       expect(product.id).toBeType("string")
       expect(product.name).toBe("Ginger")
     })
-    
+    test("GET api/products/:id response error ", async () => {
+      const res = await requestWithSupertest.get("/api/products/undefined")
+      console.log(res.status)
+      expect(res.status).toEqual(404)
+    })
+    test("POST api/products response", async () => {
+      const name = "Grillkorv"
+      const res = await requestWithSupertest.post("/api/products").send({
+        name
+      })
+      expect(res.status).toEqual(200)
+      expect(res.text).toBe(name + " is registered")
+    })
   })
 })
   
