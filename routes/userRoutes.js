@@ -24,10 +24,24 @@ router.get("/users/:id", (req, res) => {
   res.status(200).json({data : user});
 });
 router.post("/users", (req, res) => {
-  res.send("skurt was here");
+  const { name } = req.body
+
+  // lägg till namn i array
+  // testa om array blir större?
+  // testa om det blir fel
+  res.send(name + " is registered");
 });
 router.delete("/users/:id", (req, res) => {
-  res.send("skurt was here");
+  const id = req.params.id
+  if (!id) {
+    throw new InvalidParam(["id"])
+    // fel statuskod
+  }
+  // deleteta namn i array
+  // testa om arrayn blir mindre?
+  // testa om det blir fel
+  const user = Users.find(element => element.login == id)
+  res.send(user.name + " is deleted");
 });
 
 module.exports = router;
