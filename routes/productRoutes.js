@@ -31,7 +31,6 @@ router.get("/products/:id", (req, res) => {
 
 
 router.post("/products", (req, res) => {
-    //res.send("skurt was here")
     const { name } = req.body
 
     Products.push(name) //Generera och lägga till id samt pris?
@@ -39,8 +38,26 @@ router.post("/products", (req, res) => {
     res.send(name + " is registered")
 } )
 
-router.patch("/products/:id", (req, res) => {res.send("skurt was here")} )
-router.delete("/products/:id", (req, res) => {res.send("skurt was here")} )
+router.patch("/products/:id", (req, res) => {
+    const { name } = req.body
+    const id = req.params.id
+    const product = Products.find(element => element.id == id)
+
+    product.name = name
+    res.send(name + " was updated")
+} )
+
+
+router.delete("/products/:id", (req, res) => {
+    //res.send("skurt was here")
+    const id = req.params.id
+    const product = Products.find(element => element.id == id)
+    
+    //Behöver få till slice att fungera
+
+    Products.slice(product, product + 1)
+    res.send("Product was deleted")
+} )
 
 
 module.exports = router
