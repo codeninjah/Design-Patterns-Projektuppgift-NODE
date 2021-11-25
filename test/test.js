@@ -60,10 +60,13 @@ describe("Test Endpoints", () => {
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is registered")
     })
+
     test("Delete /api/users/:id", async () => {
       const login = "380e0ff1-3ab8-4a45-85f3-63148ae5560e"
       const name = "Pelle"
       const res = await requestWithSupertest.delete("/api/users/" + login)
+      //const oneLess = (resBefore.body.data.length < resAfter.body.data.length)
+      //expect(oneLess).toBe(true)
       // testa arrayens längd före och efter?
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is deleted")
@@ -88,7 +91,6 @@ describe("Test Endpoints", () => {
       //const product = products.find(element => element.id == "55f0c839-c9f5-4a77-bd1f-1d12667bf412")
       //console.log(product)
       //console.log(product.name)
-      console.log(res.text)
       expect(product.id).toBeType("string")
       expect(product.name).toBe("Ginger")
     })
@@ -105,6 +107,7 @@ describe("Test Endpoints", () => {
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is registered")
     })
+    /*
     test("PATCH api/products", async () => {
       const id = "5427d4d6-42a6-4d68-be44-a4d78e15cfbe"
       const name = "Kebabistan"
@@ -112,6 +115,7 @@ describe("Test Endpoints", () => {
 
 
     })
+    */
   })
 })
   
