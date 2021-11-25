@@ -61,11 +61,15 @@ router.delete("/products/:id", (req, res) => {
     }
     
     //Behöver få till slice att fungera
+    //Just nu funkar det inte att ändra i arrayen såsom jag skulle vilja
     const index = Products.indexOf(product)
     console.log(index)
     Products.slice(index)
+    const newProducts = []
 
-    const newProducts = Products
+    for(var prod of Products){
+        newProducts.push(prod)
+    }
 
     writeToDb(newProducts, "Products")
     res.send("Product was deleted")
