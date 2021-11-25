@@ -28,8 +28,18 @@ class NoProduct extends DesignPatternError {
     }
 }
 
+class AlreadyExists extends DesignPatternError {
+    constructor(name) {
+        super()
+        this.message = name + " already exists"
+        this.statusCode = 404
+    }
+}
+
+
 module.exports = {
     InvalidParam,
     NoUser,
-    NoProduct
+    NoProduct,
+    AlreadyExists
 }

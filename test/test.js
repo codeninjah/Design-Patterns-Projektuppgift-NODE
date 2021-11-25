@@ -101,8 +101,9 @@ describe("Test Endpoints", () => {
     })
     test("POST api/products response", async () => {
       const name = "Grillkorv"
+      const price = 50
       const res = await requestWithSupertest.post("/api/products").send({
-        name
+        name, price
       })
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is registered")
@@ -111,9 +112,18 @@ describe("Test Endpoints", () => {
     test("PATCH api/products", async () => {
       const id = "5427d4d6-42a6-4d68-be44-a4d78e15cfbe"
       const name = "Kebabistan"
-      const res = await requestWithSupertest.patch("api/products/" + id)
-
-
+      const res = await requestWithSupertest.patch("/api/products/" + id).send({
+        name
+      })
+      expect(res.status).toEqual(200)
+      expect(res.text).toBe(name + " was updated")
+    })
+    test("DELETE api/products", async () => {
+      const id = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
+      const name = "Mellon"
+      const res = await requestWithSupertest.delete("/api/products/" + id)
+      expect(res.status).toEqual(200)
+      expect(res.text).toBe(name + " is deleted")
     })
     */
   })
