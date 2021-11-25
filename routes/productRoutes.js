@@ -61,10 +61,9 @@ router.delete("/products/:id", (req, res) => {
     }
     
     //Behöver få till slice att fungera
-    //Just nu funkar det inte att ändra i arrayen såsom jag skulle vilja
     const index = Products.indexOf(product)
     console.log(index)
-    Products.slice(index)
+    Products.splice(index, 1)
     const newProducts = []
 
     for(var prod of Products){
