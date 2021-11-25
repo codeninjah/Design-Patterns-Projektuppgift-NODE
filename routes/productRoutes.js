@@ -4,6 +4,7 @@ const request = require("superagent");
 const { off } = require("superagent");
 const { Products } = require("../database.json");
 const { InvalidParam, NoProduct } = require("../errors")
+const { writeToDb } = require("./writeToDb")
 
 // req controller
 
@@ -51,11 +52,22 @@ router.patch("/products/:id", (req, res) => {
 router.delete("/products/:id", (req, res) => {
     //res.send("skurt was here")
     const id = req.params.id
+    if(!id){
+        throw new InvalidParam("No Id!")
+    }
     const product = Products.find(element => element.id == id)
+    if(!product) {
+        throw new NoProduct("No product!")
+    }
     
     //Behöver få till slice att fungera
+    const index = Products.indexOf(product)
+    console.log(index)
+    Products.slice(index)
 
-    Products.slice(product, product + 1)
+    const newProducts = Products
+
+    writeToDb(newProducts, "Products")
     res.send("Product was deleted")
 } )
 
