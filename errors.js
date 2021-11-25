@@ -2,9 +2,8 @@ class DesignPatternError extends Error {}
 
 
 class InvalidParam extends DesignPatternError {
-    constructor(fields) {
+    constructor() {
         super()
-        this.fields = fields
         this.message = "Invalid Param"
         this.statusCode = 404
     }

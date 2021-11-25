@@ -52,7 +52,7 @@ describe("Test Endpoints", () => {
       console.log(res.status)
       expect(res.status).toEqual(404)
     })
-    test("Post /api/users/:id", async () => {
+    test("Post /api/users", async () => {
       const name = "Skurt"
       const res = await requestWithSupertest.post("/api/users").send({
         name

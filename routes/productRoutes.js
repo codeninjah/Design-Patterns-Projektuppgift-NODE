@@ -19,7 +19,7 @@ router.get("/products", (req, res) => {
 } )
 router.get("/products/:id", (req, res) => {
     //res.send("skurt was here")
-    const id = req.params.id
+    const { id } = req.params
     if(!id) {
         throw new InvalidParam("No id!")
     }
@@ -36,7 +36,7 @@ router.post("/products", (req, res) => {
     const { name, price } = req.body
     //price += " SEK"
     if(!name || !price){
-        throw new InvalidParam("Name OR price must be filled")
+        throw new InvalidParam()
     }
 
     //console.log(Products.find(element => element.name == "Skurt"))
@@ -51,17 +51,17 @@ router.post("/products", (req, res) => {
 
 router.patch("/products/:id", (req, res) => {
     const { name } = req.body
-    const id = req.params.id
+    const { id } = req.params
     const product = Products.find(element => element.id == id)
 
-    product.name = name
+    product.name = name  
     res.send(name + " was updated")
 } )
 
 
 router.delete("/products/:id", (req, res) => {
     //res.send("skurt was here")
-    const id = req.params.id
+    const { id } = req.params
     if(!id){
         throw new InvalidParam("No Id!")
     }    

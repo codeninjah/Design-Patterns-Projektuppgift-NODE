@@ -1,7 +1,8 @@
 const { Users } = require("../database.json");
 const { Router } = require("express");
-const { InvalidParam, NoUser } = require("../errors")
+const { InvalidParam, NoUser, AlreadyExists } = require("../errors")
 const { writeToDb } = require("./writeToDb")
+const { v4: uuidv4 } = require('uuid');
 
 // req controller
 
@@ -13,7 +14,7 @@ router.get("/users", (req, res) => {
   res.status(200).json({data : Users});
 });
 router.get("/users/:id", (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
   if (!id) {
     throw new InvalidParam(["id"])
     // fel statuskod
@@ -27,16 +28,23 @@ router.get("/users/:id", (req, res) => {
 router.post("/users", (req, res) => {
   const { name } = req.body
 
-  // lägg till namn i array
-  // testa om array blir större?
-  // testa om det blir fel
-  res.send(name + " is registered");
+  if(!name){
+      throw new InvalidParam(["name"])
+  }
+
+  const user = Users.find(element => element.name == name)
+
+  if (user) {
+      throw new AlreadyExists(user.name)
+  }
+
+  Users.push({name, "login": uuidv4()}) //Generera och lägga till id samt pris?
+  res.send(name + " is registered")
 });
 router.delete("/users/:id", (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
   if (!id) {
     throw new InvalidParam(["id"])
-    // fel statuskod
   }
   // deleteta namn i array
   // testa om arrayn blir mindre?
