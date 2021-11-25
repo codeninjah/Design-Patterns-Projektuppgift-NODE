@@ -1,10 +1,11 @@
-
 const { Router } = require("express");
 const request = require("superagent");
 const { off } = require("superagent");
 const { Products } = require("../database.json");
-const { InvalidParam, NoProduct } = require("../errors")
+const { InvalidParam, NoProduct, AlreadyExists } = require("../errors")
 const { writeToDb } = require("./writeToDb")
+
+const { v4: uuidv4 } = require('uuid');
 
 // req controller
 
@@ -32,10 +33,19 @@ router.get("/products/:id", (req, res) => {
 
 
 router.post("/products", (req, res) => {
-    const { name } = req.body
+    const { name, price } = req.body
+    //price += " SEK"
+    if(!name || !price){
+        throw new InvalidParam("Name OR price must be filled")
+    }
 
-    Products.push(name) //Generera och lägga till id samt pris?
+    //console.log(Products.find(element => element.name == "Skurt"))
+    const product = Products.find(element => element.name == name)
+    if(product) {
+        throw new AlreadyExists(product.name)
+    }
 
+    Products.push({"id": uuidv4(), name, price}) //Generera och lägga till id samt pris?
     res.send(name + " is registered")
 } )
 
@@ -54,13 +64,10 @@ router.delete("/products/:id", (req, res) => {
     const id = req.params.id
     if(!id){
         throw new InvalidParam("No Id!")
-    }
+    }    
+
+    //Ev snygga till koden
     const product = Products.find(element => element.id == id)
-    if(!product) {
-        throw new NoProduct("No product!")
-    }
-    
-    //Behöver få till slice att fungera
     const index = Products.indexOf(product)
     console.log(index)
     Products.splice(index, 1)
@@ -71,7 +78,7 @@ router.delete("/products/:id", (req, res) => {
     }
 
     writeToDb(newProducts, "Products")
-    res.send("Product was deleted")
+    res.send(product.name + " is deleted")
 } )
 
 

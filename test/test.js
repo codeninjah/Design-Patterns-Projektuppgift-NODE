@@ -99,8 +99,9 @@ describe("Test Endpoints", () => {
     })
     test("POST api/products response", async () => {
       const name = "Grillkorv"
+      const price = 50
       const res = await requestWithSupertest.post("/api/products").send({
-        name
+        name, price
       })
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is registered")
@@ -115,10 +116,11 @@ describe("Test Endpoints", () => {
       expect(res.text).toBe(name + " was updated")
     })
     test("DELETE api/products", async () => {
-      const id = "1448dcf9-4435-4911-b345-98fd841d6048"
+      const id = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
+      const name = "Mellon"
       const res = await requestWithSupertest.delete("/api/products/" + id)
       expect(res.status).toEqual(200)
-      expect(res.text).toBe("Product was deleted")
+      expect(res.text).toBe(name + " is deleted")
     })
   })
 })
