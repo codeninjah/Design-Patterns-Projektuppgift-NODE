@@ -12,10 +12,10 @@ router.get("/cart/:userLogin", (req, res) => {
 })
 router.post("/cart/:userLogin", (req, res) => { 
 const { amount, productId } = req.body
-//const { userLogin } = req.params
+const { userLogin } = req.params
 // kontroll av värden
-console.log("hej")
 const product = Products.find(element => element.id == productId)
+Carts.push({userLogin, productId, amount})
 console.log("fel")
 
 res.send(amount + " " + product.name + " is added to cart") 
