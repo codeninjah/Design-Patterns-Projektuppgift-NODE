@@ -162,6 +162,29 @@ describe("Test Endpoints", () => {
       })
       expect(res.status).toEqual(404)
     })
+    test("Get api/cart/userLogin", async () => {
+      const userLogin = "4889fbf6-4a66-4cb4-bed9-1c5086379b9f"
+      const res = await requestWithSupertest.get("/api/cart/" + userLogin)
+      expect(res.status).toEqual(200)
+      expect(res.body.data).toBeType("array")
+    })
+    test("Get api/cart/userLogin wrong userLogin error", async () => {
+      const userLogin = "sjsjsjsjjsjs"
+      const res = await requestWithSupertest.get("/api/cart/" + userLogin)
+      expect(res.status).toEqual(404)
+    })
+    test("PUT api/cart/userLogin/itemId", async () => {
+      const userLogin = "4889fbf6-4a66-4cb4-bed9-1c5086379b9f"
+      const productId = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
+      const name = "Mellon"
+      const price = 87
+      const amount = 10
+      const res = await requestWithSupertest.patch("/api/cart/" + userLogin + "/" + productId).send({
+        amount
+      })
+      expect(res.status).toEqual(200)
+      expect(res.text).ToBe("The amount of " + name + " is changed to " + amount + " and will cost " + (amount * price) + "SEK")
+    })
   })
 })
   
