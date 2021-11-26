@@ -14,6 +14,7 @@ function isValidNumber(num) {
 }
 
 router.get("/cart/:userLogin", (req, res) => { 
+    const { userLogin } = req.params
     res.send("skurt was here")
 })
 router.post("/cart/:userLogin", (req, res) => { 
@@ -35,12 +36,20 @@ if(!product){
     throw new NoProduct()
 }
 Carts.push({userLogin, productId, amount})
-console.log("fel")
 
 res.send(amount + " " + product.name + " is added to cart") 
 } )
-router.put("/cart/:userLogin/:itemId", (req, res) => { res.send("skurt was here")} )
-router.delete("/cart/:userLogin/:itemId", (req, res) => { res.send("skurt was here")} )
+
+router.put("/cart/:userLogin/:itemId", (req, res) => { 
+    const { amount } = req.body
+    const { itemId, userLogin } = req.params
+    res.send("skurt was here")
+} )
+
+router.delete("/cart/:userLogin/:itemId", (req, res) => { 
+    const { itemId, userLogin } = req.params
+    res.send("skurt was here")
+} )
 
 
 module.exports = router
