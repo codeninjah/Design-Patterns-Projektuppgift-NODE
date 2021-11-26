@@ -154,7 +154,7 @@ describe("Test Endpoints", () => {
       })
       expect(res.status).toEqual(404)
     })
-    test("Post api/carts/userLogin wrong productId error", async () => {
+    test("Post api/carts/userLogin wrong amount error", async () => {
       const amount = "hejhop"
       const productId = "0b7f94e5-42d4-4aff-afb2-0260f8fb8e17"
       const res = await requestWithSupertest.post("/api/cart/3fbdcc8f-0d86-4f43-8d70-70008809bad0").send({

@@ -35,10 +35,18 @@ class AlreadyExists extends DesignPatternError {
     }
 }
 
+class InvalidBody extends DesignPatternError {
+    constructor() {
+        this.message = "Invalid body"
+        this.statusCode = 404
+    }
+}
+
 
 module.exports = {
     InvalidParam,
     NoUser,
     NoProduct,
-    AlreadyExists
+    AlreadyExists,
+    InvalidBody
 }
