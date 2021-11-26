@@ -76,7 +76,23 @@ router.patch("/cart/:userLogin/:itemId", (req, res) => {
 
 router.delete("/cart/:userLogin/:itemId", (req, res) => { 
     const { itemId, userLogin } = req.params
-    res.send("skurt was here")
+    const user = Users.find(element => element.login == userLogin)
+    if(!user){
+        throw new NoUser("There is no user with that id")
+    }
+    const product = Products.find(element => element.id == itemId)
+    if(!product){
+        throw new NoProduct("There is no product with that id")
+    }
+
+    const newCart = []
+    for(let cart of Carts){
+        if(cart.userLogin != userLogin && cart.productId != itemId) {
+            newCart.push(cart)
+        }
+    }
+    writeToDb(newCart, "Carts")
+    res.send(product.name + " is deleted")
 } )
 
 
