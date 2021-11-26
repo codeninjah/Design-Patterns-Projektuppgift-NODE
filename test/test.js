@@ -183,7 +183,34 @@ describe("Test Endpoints", () => {
         amount
       })
       expect(res.status).toEqual(200)
-      expect(res.text).ToBe("The amount of " + name + " is changed to " + amount + " and will cost " + (amount * price) + "SEK")
+      expect(res.text).toBe("The amount of " + name + " is changed to " + amount + " and will cost " + (amount * price) + "SEK")
+    })
+    test("PUT api/cart/userLogin/itemId wrong userLogin error", async () => {
+      const userLogin = "hejhopp"
+      const productId = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
+      const amount = 10
+      const res = await requestWithSupertest.patch("/api/cart/" + userLogin + "/" + productId).send({
+        amount
+      })
+      expect(res.status).toEqual(404)
+    })
+    test("PUT api/cart/userLogin/itemId wrong productId error", async () => {
+      const userLogin = "4889fbf6-4a66-4cb4-bed9-1c5086379b9f"
+      const productId = "hejhop"
+      const amount = 10
+      const res = await requestWithSupertest.patch("/api/cart/" + userLogin + "/" + productId).send({
+        amount
+      })
+      expect(res.status).toEqual(404)
+    })
+    test("PUT api/cart/userLogin/itemId wrong amount error", async () => {
+      const userLogin = "4889fbf6-4a66-4cb4-bed9-1c5086379b9f"
+      const productId = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
+      const amount = "hejhop"
+      const res = await requestWithSupertest.patch("/api/cart/" + userLogin + "/" + productId).send({
+        amount
+      })
+      expect(res.status).toEqual(404)
     })
   })
 })
