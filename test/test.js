@@ -52,6 +52,7 @@ describe("Test Endpoints", () => {
       console.log(res.status)
       expect(res.status).toEqual(404)
     })
+    /*
     test("Post /api/users", async () => {
       const name = "Skurt"
       const res = await requestWithSupertest.post("/api/users").send({
@@ -60,7 +61,6 @@ describe("Test Endpoints", () => {
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is registered")
     })
-
     test("Delete /api/users/:id", async () => {
       const login = "380e0ff1-3ab8-4a45-85f3-63148ae5560e"
       const name = "Pelle"
@@ -71,6 +71,7 @@ describe("Test Endpoints", () => {
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is deleted")
     })
+    */
   })
   describe("Test Endpoints /api/products", () => {
     test("GET /api/products response", async () => {
@@ -99,6 +100,7 @@ describe("Test Endpoints", () => {
       console.log(res.status)
       expect(res.status).toEqual(404)
     })
+    /*
     test("POST api/products response", async () => {
       const name = "Grillkorv"
       const price = 50
@@ -108,7 +110,6 @@ describe("Test Endpoints", () => {
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is registered")
     })
-    /*
     test("PATCH api/products", async () => {
       const id = "5427d4d6-42a6-4d68-be44-a4d78e15cfbe"
       const name = "Kebabistan"
@@ -126,6 +127,41 @@ describe("Test Endpoints", () => {
       expect(res.text).toBe(name + " is deleted")
     })
     */
+  })
+  describe("Test Endpoints /api/carts", () => {
+    test("Post api/carts/userLogin", async () => {
+      const amount = 2
+      const productId = "0b7f94e5-42d4-4aff-afb2-0260f8fb8e17"
+      const res = await requestWithSupertest.post("/api/cart/3fbdcc8f-0d86-4f43-8d70-70008809bad0").send({
+        amount, productId
+      })
+      expect(res.status).toEqual(200)
+      expect(res.text).toBe(amount + " Apple is added to cart")
+    })
+    test("Post api/carts/userLogin wrong loginUser error", async () => {
+      const amount = 2
+      const productId = "0b7f94e5-42d4-4aff-afb2-0260f8fb8e17"
+      const res = await requestWithSupertest.post("/api/cart/hejhopp").send({
+        amount, productId
+      })
+      expect(res.status).toEqual(404)
+    })
+    test("Post api/carts/userLogin wrong productId error", async () => {
+      const amount = 2
+      const productId = "grillkorv"
+      const res = await requestWithSupertest.post("/api/cart/3fbdcc8f-0d86-4f43-8d70-70008809bad0").send({
+        amount, productId
+      })
+      expect(res.status).toEqual(404)
+    })
+    test("Post api/carts/userLogin wrong productId error", async () => {
+      const amount = "hejhop"
+      const productId = "0b7f94e5-42d4-4aff-afb2-0260f8fb8e17"
+      const res = await requestWithSupertest.post("/api/cart/3fbdcc8f-0d86-4f43-8d70-70008809bad0").send({
+        amount, productId
+      })
+      expect(res.status).toEqual(404)
+    })
   })
 })
   
