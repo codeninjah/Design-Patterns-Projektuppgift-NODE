@@ -212,27 +212,29 @@ describe("Test Endpoints", () => {
       })
       expect(res.status).toEqual(404)
     })
+    /*
     test("DELETE/api/cart/userLogin/itemId", async () => {
       const userLogin = "3fbdcc8f-0d86-4f43-8d70-70008809bad0"
-      const productId = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
+      const itemId = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
       const name = "Mellon"
-      const res = await requestWithSupertest.delete("/api/cart/" + userLogin + "/" + productId)
+      const res = await requestWithSupertest.delete("/api/cart/" + userLogin + "/" + itemId)
       expect(res.status).toEqual(200)
-      expect(res.body).toBe(name + " is deleted")
+      expect(res.text).toBe(name + " is deleted")
     })
+    */
     test("DELETE /api/cart/userLogin/itemId wrong userLogin error", async () => {
       const userLogin = "blabalabalabalabl"
-      const productId = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
-      const res = await requestWithSupertest.delete("/api/cart/" + userLogin + "/" + productId)
+      const itemId = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
+      const res = await requestWithSupertest.delete("/api/cart/" + userLogin + "/" + itemId)
       expect(res.status).toEqual(404)
-      expect(res.text).toBe("Wrong userLogin")
+      //expect(res.text).toBe("There is no user with that id")
     })
     test("DELETE /api/cart/userLogin/itemId wrong itemId error", async () => {
       const userLogin = "3fbdcc8f-0d86-4f43-8d70-70008809bad0"
       const itemId = "hsgsJAKSBKJJ"
-      const res = await requestWithSupertest.delete("/api/cart/" + userLogin + "/" + productId)
+      const res = await requestWithSupertest.delete("/api/cart/" + userLogin + "/" + itemId)
       expect(res.status).toEqual(404)
-      expect(res.text).toBe("Wrong itemId")
+      //expect(res.text).toBe("There is no product with that id")
     })
   })
 })
