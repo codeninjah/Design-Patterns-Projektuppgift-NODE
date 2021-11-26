@@ -50,10 +50,7 @@ router.delete("/users/:id", (req, res) => {
   // testa om arrayn blir mindre?
   // testa om det blir fel
   const user = Users.find(element => element.login == id)
-  const newUsers = Users.filter(element => {
-    return element.login != id
-  })
-  // not now
+  const newUsers = Users.filter(element => element.login != id)
   writeToDb(newUsers, "Users")
   res.send(user.name + " is deleted");
 });

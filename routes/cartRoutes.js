@@ -2,6 +2,7 @@
 const { Router } = require("express")
 const { Products, Carts, Users } = require("../database.json")
 const { NoUser, NoProduct, InvalidBody } = require("../errors")
+const { writeToDb } = require("./writeToDb")
 
 // req controller
 
@@ -59,8 +60,9 @@ router.patch("/cart/:userLogin/:itemId", (req, res) => {
     if(!product){
         throw new NoProduct()
     }
-    const cart = Carts.find(element => element.productId == itemId && element.userLogin == userLogin)
-
+    const cart = Carts.find(element => (element.productId == itemId && element.userLogin == userLogin))
+    console.log(cart)
+    //cart.amount = amount
     res.send("The amount of " + product.name + " is changed to " + amount + " and will cost " + (amount * product.price) + "SEK")
 } )
 
