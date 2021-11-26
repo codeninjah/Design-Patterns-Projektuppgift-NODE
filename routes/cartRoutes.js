@@ -1,7 +1,7 @@
 
 const { Router } = require("express")
 const { Products, Carts, Users } = require("../database.json")
-const { NoUser, NoProduct, InvalidBody } = require("../errors")
+const { NoUser, NoProduct, InvalidBody, AlreadyExists } = require("../errors")
 const { writeToDb } = require("./writeToDb")
 
 // req controller
@@ -42,9 +42,14 @@ if(!product){
     throw new NoProduct()
 }
 const newCarts = Carts
-newCarts.push({userLogin, productId, amount})
+const cartList = newCarts.filter(element => element.userLogin = userLogin)
+let cart = cartList.find(element => element.productId === productId)
+if (!cart) {
+    newCarts.push({userLogin, productId, amount})
+} else {
+    cart = {userLogin, productId, amount}
+}
 writeToDb(newCarts, "Carts")
-
 res.send(amount + " " + product.name + " is added to cart") 
 } )
 
@@ -64,6 +69,7 @@ router.patch("/cart/:userLogin/:itemId", (req, res) => {
     }
     const cartList = Carts.filter(element => element.userLogin = userLogin)
     const cart = cartList.find(element => element.productId === itemId)
+    cart.amount = amount
     writeToDb(Carts, "Carts")
     res.send("The amount of " + product.name + " is changed to " + amount + " and will cost " + (amount * product.price) + "SEK")
 } )
