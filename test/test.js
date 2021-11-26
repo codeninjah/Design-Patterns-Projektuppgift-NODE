@@ -100,7 +100,6 @@ describe("Test Endpoints", () => {
       console.log(res.status)
       expect(res.status).toEqual(404)
     })
-    /*
     test("POST api/products response", async () => {
       const name = "Grillkorv"
       const price = 50
@@ -110,6 +109,7 @@ describe("Test Endpoints", () => {
       expect(res.status).toEqual(200)
       expect(res.text).toBe(name + " is registered")
     })
+    /*
     test("PATCH api/products", async () => {
       const id = "5427d4d6-42a6-4d68-be44-a4d78e15cfbe"
       const name = "Kebabistan"
@@ -131,12 +131,12 @@ describe("Test Endpoints", () => {
   describe("Test Endpoints /api/carts", () => {
     test("Post api/carts/userLogin", async () => {
       const amount = 2
-      const productId = "0b7f94e5-42d4-4aff-afb2-0260f8fb8e17"
+      const productId = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
       const res = await requestWithSupertest.post("/api/cart/3fbdcc8f-0d86-4f43-8d70-70008809bad0").send({
         amount, productId
       })
       expect(res.status).toEqual(200)
-      expect(res.text).toBe(amount + " Apple is added to cart")
+      expect(res.text).toBe(amount + " Mellon is added to cart")
     })
     test("Post api/carts/userLogin wrong loginUser error", async () => {
       const amount = 2
@@ -174,7 +174,7 @@ describe("Test Endpoints", () => {
       expect(res.status).toEqual(404)
     })
     test("PUT api/cart/userLogin/itemId", async () => {
-      const userLogin = "4889fbf6-4a66-4cb4-bed9-1c5086379b9f"
+      const userLogin = "3fbdcc8f-0d86-4f43-8d70-70008809bad0"
       const productId = "818ca9b3-a0f1-4267-b429-a8b7a2da66f4"
       const name = "Mellon"
       const price = 87

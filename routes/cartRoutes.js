@@ -41,7 +41,9 @@ const product = Products.find(element => element.id == productId)
 if(!product){
     throw new NoProduct()
 }
-Carts.push({userLogin, productId, amount})
+const newCarts = Carts
+newCarts.push({userLogin, productId, amount})
+writeToDb(newCarts, "Carts")
 
 res.send(amount + " " + product.name + " is added to cart") 
 } )
@@ -60,9 +62,9 @@ router.patch("/cart/:userLogin/:itemId", (req, res) => {
     if(!product){
         throw new NoProduct()
     }
-    const cart = Carts.find(element => (element.productId == itemId && element.userLogin == userLogin))
-    console.log(cart)
-    //cart.amount = amount
+    const cartList = Carts.filter(element => element.userLogin = userLogin)
+    const cart = cartList.find(element => element.productId === itemId)
+    writeToDb(Carts, "Carts")
     res.send("The amount of " + product.name + " is changed to " + amount + " and will cost " + (amount * product.price) + "SEK")
 } )
 
