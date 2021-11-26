@@ -37,6 +37,7 @@ class AlreadyExists extends DesignPatternError {
 
 class InvalidBody extends DesignPatternError {
     constructor() {
+        super()
         this.message = "Invalid body"
         this.statusCode = 404
     }
