@@ -1,6 +1,6 @@
 const { Users } = require("../database.json");
 const { Router } = require("express");
-const { InvalidParam, NoUser, AlreadyExists } = require("../errors")
+const { InvalidParam, NoUser, AlreadyExists, InvalidBody } = require("../errors")
 const { writeToDb } = require("./writeToDb")
 const { v4: uuidv4 } = require('uuid');
 
@@ -29,11 +29,10 @@ router.post("/users", (req, res) => {
   const { name } = req.body
 
   if(!name){
-      throw new InvalidParam(["name"])
+      throw new InvalidBody(["name"])
   }
 
   const user = Users.find(element => element.name == name)
-
   if (user) {
       throw new AlreadyExists(user.name)
   }
@@ -46,10 +45,10 @@ router.delete("/users/:id", (req, res) => {
   if (!id) {
     throw new InvalidParam(["id"])
   }
-  // deleteta namn i array
-  // testa om arrayn blir mindre?
-  // testa om det blir fel
   const user = Users.find(element => element.login == id)
+  if (!user) {
+    throw new NoUser(["id"])
+  }
   const newUsers = Users.filter(element => element.login != id)
   writeToDb(newUsers, "Users")
   res.send(user.name + " is deleted");

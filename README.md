@@ -1,3 +1,11 @@
+seed.js användes för att seeda databasen eftersom den slumpar Id för produkter och namn har vi skapat reSeed.js och en kopia av databasen (databaseCopy) för återställa databasen inför tester
+
+Vi har skapat tester för hur anropet till enpoints skickar rätt värden och då kontrollerat:
+statuskod, vad som skickas tillbaka
+
+Sedan har vi skapat tester för hur olika felvärden eller när resurser inte finns eller redan finns skapar statuskod 404 genom att det kastas error.
+
+
 # Design-Patterns-Projektuppgift-NODE
 
 ## Projektuppgift: Node

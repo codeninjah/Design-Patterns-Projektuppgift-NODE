@@ -2,23 +2,18 @@ const { Router } = require("express");
 const request = require("superagent");
 const { off } = require("superagent");
 const { Products } = require("../database.json");
-const { InvalidParam, NoProduct, AlreadyExists } = require("../errors")
+const { InvalidParam, NoProduct, AlreadyExists, InvalidBody, DoesntExist } = require("../errors")
 const { writeToDb } = require("./writeToDb")
+const { isValidNumber } = require("./isValidNumber")
 
 const { v4: uuidv4 } = require('uuid');
-
-// req controller
-
 
 const router = Router()
 
 router.get("/products", (req, res) => {
-    //   console.log(Users);
-    //   res.setHeader('content-type', 'application/json');
     res.status(200).json({data : Products});    
 } )
 router.get("/products/:id", (req, res) => {
-    //res.send("skurt was here")
     const { id } = req.params
     if(!id) {
         throw new InvalidParam("No id!")
@@ -34,12 +29,9 @@ router.get("/products/:id", (req, res) => {
 
 router.post("/products", (req, res) => {
     const { name, price } = req.body
-    //price += " SEK"
-    if(!name || !price){
+    if(!name || !price || !isValidNumber(price)){
         throw new InvalidParam()
     }
-
-    //console.log(Products.find(element => element.name == "Skurt"))
     const product = Products.find(element => element.name == name)
     if(product) {
         throw new AlreadyExists(product.name)
@@ -52,7 +44,17 @@ router.post("/products", (req, res) => {
 router.patch("/products/:id", (req, res) => {
     const { name } = req.body
     const { id } = req.params
+    if(!id || id === "undefined"){
+        throw new InvalidParam()
+    }  
+    if(!name){
+        throw new InvalidBody(["name"])
+    }
+
     const product = Products.find(element => element.id == id)
+    if (!product) {
+        throw new DoesntExist(name)
+    }
 
     product.name = name  
     res.send(name + " was updated")
@@ -60,16 +62,15 @@ router.patch("/products/:id", (req, res) => {
 
 
 router.delete("/products/:id", (req, res) => {
-    //res.send("skurt was here")
     const { id } = req.params
     if(!id){
-        throw new InvalidParam("No Id!")
+        throw new InvalidParam()
     }    
 
     //Ev snygga till koden
     const product = Products.find(element => element.id == id)
     const index = Products.indexOf(product)
-    console.log(index)
+
     Products.splice(index, 1)
     const newProducts = []
 

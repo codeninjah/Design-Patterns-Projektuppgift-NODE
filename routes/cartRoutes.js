@@ -3,16 +3,12 @@ const { Router } = require("express")
 const { Products, Carts, Users } = require("../database.json")
 const { NoUser, NoProduct, InvalidBody, AlreadyExists } = require("../errors")
 const { writeToDb } = require("./writeToDb")
+const { isValidNumber } = require("./isValidNumber")
 
 // req controller
 
 
 const router = Router()
-
-//Följande måste lösas
-function isValidNumber(num) {
-    return typeof num === 'number' && !isNaN(num);
-}
 
 router.get("/cart/:userLogin", (req, res) => { 
     const { userLogin } = req.params
